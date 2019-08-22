@@ -1,3 +1,6 @@
+echo "Generating .desktop file for Spacemacs..."
+echo "NOTE: you will be asked the root password. This is so the script can write /usr/share/applications/spacemacs.desktop ."
+sed -e "s|Icon=emacs|Icon=$HOME/.emacs.d/assets/spacemacs.xcf|" -e 's/Name=Emacs/Name=Spacemacs/' /usr/share/applications/emacs.desktop > ~/.local/share/applications/spacemacs.desktop
 echo "Getting Adobe Source Code Pro font..."
 git clone https://github.com/adobe-fonts/source-code-pro
 echo "NOTE: you will be asked the root password. This is so you can apply the fonts system-wide."
@@ -11,6 +14,8 @@ echo "Cloning Spacemacs to ~/.emacs.d"
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 echo "Cloning my config layer to ~/.emacs.d/private/lorecast162"
 git clone https://github.com/lorecast162/Spacemacs-Config-Layer ~/.emacs.d/private/lorecast162
+echo "Moving spacemacs icon..."
+mv ~/.emacs.d/private/lorecast162/img/spacemacs.xcf ~/.emacs.d/assets/spacemacs.xcf
 echo "Emacs will load for the first time under spacemacs, after all is done, close it, the script will take care of the rest."
 emacs
 echo "To finish setup, emacs will open the ~/.spacemacs file. You will have to add \"lorecast162\" to the \"dotspacemacs-configuration-layers\" var after \"'(\""
